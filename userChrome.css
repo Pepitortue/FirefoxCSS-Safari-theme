@@ -1,0 +1,511 @@
+/*###########################################################################
+#                               UI modifications                            #
+###########################################################################*/
+
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+toolbarbutton#alltabs-button {
+  -moz-binding: url("userChrome.xml#js");
+}
+
+:root:-moz-lwtheme {
+  --toolbox-border-bottom-color: rgba(0, 0, 0, 0) !important;
+}
+
+/* 'Show your bookmarks' toolbar button. */
+#bookmarks-menu-button {
+  list-style-image: url('bookmarks.svg') !important;
+}
+
+/* Hide/re-order the menu button. */
+#PanelUI-button {
+  display: none !important;
+}
+
+/*###########################################################################
+#                                  Tabs                                     #
+###########################################################################*/
+
+/* Tabs height + color + bottom boder for scroll tab buttons */
+#tabbrowser-tabs {  
+  padding: 0;
+  margin: 0;
+  --tab-min-height: 24px;
+  text-align: center;
+  background-color: #1B1B1C;
+  border-style: solid;
+  border-top-width: 0px;
+  border-bottom-width: 1px;
+  border-right-width: 0px;
+  border-left-width: 0px;;
+  border-bottom-color: black !important;
+}
+
+/* Tabs max height */
+#titlebar {
+  max-height: 24px;
+}
+
+/* Remove left tab panel space */
+.titlebar-buttonbox-container {
+  max-width: 0px;
+  min-width: 0px;
+}
+
+/* Color all tabs and borders */
+.tabbrowser-tab, .tab-content, .tab-background {
+  background-color: #1B1B1C;
+  color: #c0c0c0;
+  border-style: solid;
+  border-width: 1px !important;
+  border-left-color: #474645 !important;
+  border-right-color: #474645 !important;
+  border-bottom-color: black !important;
+  border-top-color: #474645 !important;
+  margin-left: -1px;
+  margin-top: -1px;
+}
+
+/* Tab panel bottom and top borders */
+#TabsToolbar-customization-target {
+  background-color: #1B1B1C;
+  border-style: solid;
+  border-width: 1px;
+  border-left-color: transparent !important;
+  border-right-color: transparent !important;
+  border-bottom-color: black !important;
+  border-top-color: #474645 !important;
+  margin-left: -1px;
+}
+
+/* Color selected tab */
+.tabbrowser-tab .tab-content[selected="true"], .tab-background[selected="true"] {
+  background-color: rgb(255, 255, 255, 0);
+  color: white;
+}
+
+/* Color hovered tab */
+.tabbrowser-tab .tab-content:not([selected]):hover, .tab-background:not([selected]):hover {
+  background-color: rgb(0, 0, 0, 0.5);
+}
+
+/* Keep close button on the left */
+.tab-content:not([pinned]) .tab-label-container {
+  -moz-box-ordinal-group: 2;
+  display: -moz-grid !important;
+  margin-left: 3px;
+  margin-right: 17px;
+}
+
+/* Stretch the tab bar to the whole screen width */
+.tabbrowser-tab[fadein]:not([pinned]) {
+  max-width: unset !important;
+}
+
+/* Remove tab borders since it is managed by #titelbar */
+.tabbrowser-tab::after,
+.tabbrowser-tab::before {
+  border: none !important;
+}
+
+/* Remove tab focus indicator */
+.tab-line {
+  display: none !important;
+}
+
+/* Make tab close button replace the tab icon on hover */
+.tabbrowser-tab:not([pinned]):hover  .tab-icon-image {
+  display: none !important;
+}
+
+/* Make tab close button replace the tab icon on hover */
+.tabbrowser-tab:[pinned]:hover  .tab-icon-image {
+  display: none !important;
+}
+
+/* Hide close button while not focused */
+.tabbrowser-tab .tab-close-button {
+  display: none !important;
+}
+
+/* Align close tab button */
+.tabbrowser-tab:not([pinned="true"]):hover .tab-close-button {
+  display: -moz-box !important;
+  margin: 1px 5px 0px -3px !important;
+}
+
+/* Tabs margin tweak */
+#titlebar {
+  margin-right: -1px;
+}
+
+/*  Toolbar back and forward button the same size */
+.toolbarbutton-icon {
+  background: transparent !important;
+  max-width: 27px;
+}
+
+/* Fix back button size */
+#back-button>.toolbarbutton-icon {
+  transform: scale(1.43, 1.43) !important;
+}
+
+/* New tab button [+] transparent background on hover + size */
+#tabs-newtab-button > .toolbarbutton-icon {
+  background: transparent !important;
+  max-width: 23px;
+}
+
+/* New tab button [+] background */
+.toolbar-items {
+  background-color: rgb(0, 0, 0, 0.25);
+}
+
+/* New tab button [+] darker background on hover */
+.toolbar-items:hover {
+  background-color: rgb(0, 0, 0, 0.45);
+}
+
+/* Darker arrow tab scroll buttons */
+.tabbrowser-arrowscrollbox:hover {
+  background-color: rgb(0, 0, 0, .25);
+}
+
+/* New tab button [+] on tab overflow borders */
+#new-tab-button {
+  border-style: solid;
+  border-top-width: 0px;
+  border-bottom-width: 0px;
+  border-right-width: 0px;
+  border-left-width: 1px;
+  border-left-color: #474645 !important;
+}
+
+/* Darker New tab button [+] on hover */
+#new-tab-button:hover {
+  background-color: rgb(0, 0, 0, .25) !important;
+}
+
+/* New tab button [+] icon width */
+#new-tab-button > .toolbarbutton-icon {
+  max-width: 23px;
+}
+
+/* Darker scroll tab button on hover */
+.scrollbutton-up:hover, .scrollbutton-down:hover {
+  background-color: rgb(0, 0, 0, .25) !important;
+}
+
+/* Scroll button border color tweaks when disabled */
+.scrollbutton-up[disabled="true"] {
+  border-style: solid;
+  border-width: 0px;
+  border-right-width: 1px;
+  border-color: #888;
+}
+
+/* Tab sound icon position and color */
+.tab-icon-sound {
+  -moz-box-ordinal-group: 2 !important;
+  color: #c0c0c0;
+}
+
+/* Hide the "all tabs" button on tab overflow */
+#alltabs-button {
+  display: none;
+}
+
+/* Pinned tabs width and position */
+.tab-content[pinned] {
+  margin-left: 10px;
+  margin-right: 1px;
+}
+
+/* Centered pinned tab icon */
+.tabbrowser-tab:-moz-any([pinned])> .tab-stack > .tab-content > .tab-icon-image{
+  margin-left: -2px;
+}
+
+/* Hide blue dot indicator on pinned tabs */
+.tabbrowser-tab:-moz-any([image], [pinned]) > .tab-stack > .tab-content[attention]:not([selected="true"]),
+.tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) {
+  background-image: none !important;
+}
+
+/* Pinned tabs margin/border tweaks on tab overflow */
+.tabbrowser-tab:-moz-any([pinned])> .tab-stack > .tab-content {
+  margin-left: -1px;
+  margin-right: 0px;
+  width: 38px !important;
+  max-width: 38px !important;
+}
+
+/* Private browsing button */
+#titlebar-secondary-buttonbox {
+  max-height: 25px;
+  margin-left: -1px;
+  background-color: #1B1B1C;
+  border-style: solid;
+  border-top-width: 1px;
+  border-top-color: #474645 !important;
+  border-bottom-width: 1px;
+  border-bottom-color: black !important;
+  border-right-width: 0px;
+  border-left-width: 1px;
+  border-left-color: #474645 !important;
+}
+
+/* Private browsing icon */
+.private-browsing-indicator {
+  max-width: 15px;
+  padding: 2px;
+}
+
+/*###########################################################################
+#                                 URL Bar                                   #
+###########################################################################*/
+
+/* Horizontally centered bar */
+#urlbar-container {
+  -moz-box-pack: center !important;
+}  
+
+/* URL bar size and alignment */
+#urlbar,
+.searchbar-textbox,
+#urlbar:hover,
+#urlbar[focused],
+.searchbar-textbox:hover {
+  text-align: center !important;
+  padding: 0px !important;
+  font-size: 1.1em !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  margin: 4px 0px !important;
+  min-height: 23px !important;
+  max-height: 22px !important;
+  cursor: default;
+  max-width: 765px;
+}
+
+/* Remove navbar buttons */
+#identity-box[pageproxystate="valid"], 
+#tracking-protection-icon-container  {
+  display: none !important;
+}
+
+/* Vertically centered URL bar */
+#urlbar-container {
+  margin-top: 1px;
+}
+
+/* Centered URL bar text */
+#urlbar-input{
+  text-align: center !important;
+}
+
+/* URL bar inner text padding */
+.urlbar-input-box {
+  padding-left: 10px;
+  padding-right: 0px;
+}
+
+/* Borders/Padding inside URL bar */
+#identity-box {
+  border: 0 !important;
+  padding: 0 4px !important;
+}
+
+/* Remove sperators from the tool bar */
+#pageActionSeparator {
+  display: none;
+}
+
+/*###########################################################################
+#                               Pop Up URL                                  #
+###########################################################################*/
+
+/* Backgrounf color of the popup menu */
+.urlbarView {
+  background-color: #242424C0 !important;
+  backdrop-filter: blur(32px) !important; /* Firefox > 70 / Need layout.css.backdrop-filter.enabled set to true*/
+  width: 60% !important;
+  margin-left: 18%;
+  border-radius: 6px;
+  border-radius: 0 8px 8px !important;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 25%) !important;
+}
+
+/* Popup menu size and position */
+#urlbar-results {
+  --item-padding-start: 0px !important;
+  --item-padding-end: 0 !important;
+  text-align: left;
+}
+
+/* Popup menu website/description text */
+.urlbarView-row:not([type="search"]) .urlbarView-title {
+  min-width: 60% !important;
+  max-width: 60% !important;
+  font-size: 11px;
+  margin-right: 700px;
+}
+
+/* Popup menu url text */
+.urlbarView-url {
+  min-width: 30% !important;
+  max-width: 30% !important;
+  font-weight: 150;
+}
+
+/* Selected result item */
+.autocomplete-richlistitem[selected],
+.urlbarView-row[selected] {
+   background-color: #222221 !important; /* Selected Row */
+}
+
+/* Hover result item */
+.autocomplete-richlistitem[selected],
+.urlbarView-row:hover {
+   background-color: #222221 !important; /* Hovered Row */
+}
+
+/* Border between results */
+#PopupAutoCompleteRichResult .autocomplete-richlistitem,
+.urlbarView-row {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* Remove the separator */
+.urlbarView-title-separator {
+  display: none;
+}
+
+/*###########################################################################
+#  Hide bookmark button, page actions, security labels and extension icons  #
+###########################################################################*/
+
+/* Hide some URL bar buttons */
+#star-button-box,
+#pageActionButton,
+#blocked-permissions-container,
+#identity-icon-labels,
+#extension-icon,
+#reader-mode-button,
+#urlbar-history-dropmarker {
+  display: none !important;
+  background: transparent !important;
+}
+
+#identity-box #identity-icon {
+  margin-right: -20px !important;
+  opacity: 0 !important;
+}
+
+#PersonalToolbar {
+  max-height: none !important;
+  /* Otherwise it's limited to 4em */
+  height: 2.5em;
+  /* Just some ridiculous size so you know it works. */
+}
+
+/* Hide titlebar spaces */
+.titlebar-spacer {
+  display: none;
+}
+
+/* Put nav bar above the tab bar and make a space for traffic lights. */
+#nav-bar {
+  -moz-box-ordinal-group: 0 !important;
+  padding-left: 75px !important;
+  background-color: #292929 !important;
+  border: none!important;
+}
+
+/* Darker Navbar when unhovered */
+#nav-bar > * {
+  opacity:0.5;
+  transition: opacity 0.3s;
+}
+
+/* Lighten Navbar on hover */
+#nav-bar:hover > * {
+  opacity:1 !important;
+}
+
+/*###########################################################################
+#                                 Tool Bar                                  #
+###########################################################################*/
+
+/* Contextual toolbar buttons, only show on hover, this is what matters, the rest of the file are just style tweaks I like
+ */
+
+:root:not([customizing]) #nav-bar toolbarbutton {
+  opacity: 0 !important;
+  transform: scale(.85, .85) !important;
+  pointer-events: none !important;
+  transition: all 500ms var(--animation-easing-function) !important;
+}
+
+:root:not([customizing]) :hover > #nav-bar toolbarbutton,
+:root:not([customizing]) #navigator-toolbox:focus-within #nav-bar toolbarbutton,
+:root:not([customizing]) :hover > #titlebar toolbarbutton {
+  transform: scale(1, 1) !important;
+  opacity:1 !important;
+  margin-left:0 !important;
+  pointer-events: auto !important;
+}
+
+window:not([chromehidden~="toolbar"]) #urlbar-container > .toolbarbutton-1:-moz-any([disabled],
+:not([open]):not([disabled]):not(:active)) > .toolbarbutton-icon[class],
+#main-window:not([customizing]) #back-button[disabled] > .toolbarbutton-icon[class] {
+  box-shadow: none !important;
+  border: 0px !important;
+}
+
+/* Move traffic lights in the space carved above. */
+.titlebar-buttonbox-container {
+  position: absolute;
+  margin-top: -64px
+}
+
+#nav-bar:-moz-window-inactive toolbarbutton > .toolbarbutton-icon:hover,
+#PanelUI-menu-button:-moz-window-inactive > .toolbarbutton-badge-stack:hover,
+#downloads-button:-moz-window-inactive > .toolbarbutton-badge-stack:hover {
+  background: rgb(47, 48, 48) !important;
+  fill: #ff !important;
+}
+
+#downloads-button {
+  margin-right: 0px !important;
+}
+
+#downloads-button > .toolbarbutton-badge-stack {
+  max-width: 28px !important;
+  min-width: 28px !important;
+  display: -webkit-box !important;
+}
+
+#downloads-indicator-anchor {
+  margin-top: -2px !important;
+  transform: scale(0.88) !important;
+}
+
+/** Remove circle around back button **/
+#back-button:not(:hover),
+#back-button:not(:hover)>.toolbarbutton-icon {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+/** Remove circle around back button on hover **/
+#back-button:hover,
+#back-button:hover>.toolbarbutton-icon {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  opaci
