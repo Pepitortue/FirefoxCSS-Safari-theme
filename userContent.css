@@ -1,0 +1,4 @@
+/* Dark scrollbar */
+:root {
+scrollbar-color: #101010 #303030;
+scrollbar-width: thin;
