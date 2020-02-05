@@ -1,10 +1,7 @@
 # FirefoxCSS-Safari-theme
 A Safari like them for Firefox 72+ MacOS
 
-Inline-style: 
 ![FirefoxCSS Safari theme](https://github.com/Pepitortue/FirefoxCSS-Safari-theme/blob/master/Showcase.png "FirefoxCSS Safari theme")
-
-Inline-style: 
 ![FirefoxCSS Safari theme gif](https://github.com/Pepitortue/FirefoxCSS-Safari-theme/blob/master/Showcase.gif "FirefoxCSS Safari theme gif")
 
 ## What is it
