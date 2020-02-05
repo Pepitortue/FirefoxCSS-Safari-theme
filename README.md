@@ -2,7 +2,6 @@
 A Safari like them for Firefox 72+ MacOS
 
 ![FirefoxCSS Safari theme](https://github.com/Pepitortue/FirefoxCSS-Safari-theme/blob/master/Showcase.png "FirefoxCSS Safari theme")
-![FirefoxCSS Safari theme gif](https://github.com/Pepitortue/FirefoxCSS-Safari-theme/blob/master/Showcase.gif "FirefoxCSS Safari theme gif")
 
 ## What is it
 This is a Firefox theme for MacOS inspired by Safari. This theme is not meant to reproduce perfectly Safari.
@@ -28,3 +27,5 @@ To enable the blur filter on the pop up URL menu, you need to set the `layout.cs
 ## Issues
 This theme was tested with Firefox 72.0.2 on MacOS Catalina. Graphical differences might occur on other OS.
 I will update the theme for every new Firefox release since this is my daily theme.
+
+![FirefoxCSS Safari theme gif](https://github.com/Pepitortue/FirefoxCSS-Safari-theme/blob/master/Showcase.gif "FirefoxCSS Safari theme gif")
