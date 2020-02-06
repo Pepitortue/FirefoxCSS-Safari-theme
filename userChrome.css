@@ -12,9 +12,10 @@ toolbarbutton#alltabs-button {
   --toolbox-border-bottom-color: rgba(0, 0, 0, 0) !important;
 }
 
-/* 'Show your bookmarks' toolbar button. */
-#bookmarks-menu-button {
-  list-style-image: url('bookmarks.svg') !important;
+/* Move traffic lights in the space carved above. */
+.titlebar-buttonbox-container {
+  position: absolute;
+  margin-top: -64px
 }
 
 /* Hide/re-order the menu button. */
@@ -22,9 +23,28 @@ toolbarbutton#alltabs-button {
   display: none !important;
 }
 
+/* Popup menu color (righ click, menu list...) */
+menuitem, .sync-ui-item, #context-navigation menuitem  {
+  background-color: #1B1B1C !important;
+}
+
+/* Popup menu color (righ click, menu list...) */
+#context-navigation menuitem:hover {
+  background-color: #292929 !important;
+  border-radius: 200px;
+}
+
 /*###########################################################################
 #                                  Tabs                                     #
 ###########################################################################*/
+
+/* Put nav bar above the tab bar and make a space for traffic lights. */
+#nav-bar {
+  -moz-box-ordinal-group: 0 !important;
+  padding-left: 75px !important;
+  background-color: #292929 !important;
+  border: none!important;
+}
 
 /* Tabs height + color + bottom boder for scroll tab buttons */
 #tabbrowser-tabs {  
@@ -46,7 +66,12 @@ toolbarbutton#alltabs-button {
   max-height: 24px;
 }
 
-/* Remove left tab panel space */
+/* Hide titlebar spaces */
+.titlebar-spacer {
+  display: none;
+}
+
+/* Remove left tab panel spaces */
 .titlebar-buttonbox-container {
   max-width: 0px;
   min-width: 0px;
@@ -201,6 +226,7 @@ toolbarbutton#alltabs-button {
   border-style: solid;
   border-width: 0px;
   border-right-width: 1px;
+  padding-left: 5px !important; 
   border-color: #888;
 }
 
@@ -215,15 +241,9 @@ toolbarbutton#alltabs-button {
   display: none;
 }
 
-/* Pinned tabs width and position */
-.tab-content[pinned] {
-  margin-left: 10px;
-  margin-right: 1px;
-}
-
 /* Centered pinned tab icon */
 .tabbrowser-tab:-moz-any([pinned])> .tab-stack > .tab-content > .tab-icon-image{
-  margin-left: -2px;
+  margin-left: -1px;
 }
 
 /* Hide blue dot indicator on pinned tabs */
@@ -236,8 +256,8 @@ toolbarbutton#alltabs-button {
 .tabbrowser-tab:-moz-any([pinned])> .tab-stack > .tab-content {
   margin-left: -1px;
   margin-right: 0px;
-  width: 38px !important;
-  max-width: 38px !important;
+  width: 40px !important;
+  max-width: 40px !important;
 }
 
 /* Private browsing button */
@@ -268,7 +288,7 @@ toolbarbutton#alltabs-button {
 /* Horizontally centered bar */
 #urlbar-container {
   -moz-box-pack: center !important;
-}  
+}
 
 /* URL bar size and alignment */
 #urlbar,
@@ -284,9 +304,24 @@ toolbarbutton#alltabs-button {
   border: none !important;
   margin: 4px 0px !important;
   min-height: 23px !important;
-  max-height: 22px !important;
+  max-height: 23px !important;
   cursor: default;
-  max-width: 765px;
+  max-width: 780px;
+}
+
+/* Darker Navbar when unhovered */
+/* !!TODO - isssue that makes pop up url transparent 
+Disabled in the meantime */
+/*
+#nav-bar > * {
+  opacity:0.5;
+  transition: opacity 0.3s;
+}
+*/
+
+/* Lighten Navbar on hover */
+#nav-bar:hover > * {
+  opacity:1 !important;
 }
 
 /* Remove navbar buttons */
@@ -326,17 +361,35 @@ toolbarbutton#alltabs-button {
 #                               Pop Up URL                                  #
 ###########################################################################*/
 
-/* Backgrounf color of the popup menu */
-.urlbarView {
-  background-color: #242424C0 !important;
-  backdrop-filter: blur(32px) !important; /* Firefox > 70 / Need layout.css.backdrop-filter.enabled set to true*/
-  width: 60% !important;
-  margin-left: 18%;
-  border-radius: 6px;
-  border-radius: 0 8px 8px !important;
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 25%) !important;
+/* Background color of the popup menu */
+@media (max-width: 1920px) {
+  .urlbarView {
+    margin-top: -7px !important;
+    background-color: #242424C0 !important;
+    backdrop-filter: blur(32px) !important; /* Firefox > 70 / Need layout.css.backdrop-filter.enabled set to true*/
+    width: 780px !important;
+    margin-left: 28.25%;
+    border-radius: 0 0 8px 8px !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    box-shadow: 0px 0px 40px rgba(0, 0, 0, 25%) !important;
+  }
 }
 
+@media (max-width: 1919px) {
+  .urlbarView {
+     width: 50% !important;
+    margin-left: 25%;
+  }
+}
+
+@media (max-width: 1179px) {
+  .urlbarView {
+    width: 90% !important;
+    margin-left: 5%;
+  }
+}
+  
 /* Popup menu size and position */
 #urlbar-results {
   --item-padding-start: 0px !important;
@@ -356,7 +409,8 @@ toolbarbutton#alltabs-button {
 .urlbarView-url {
   min-width: 30% !important;
   max-width: 30% !important;
-  font-weight: 150;
+  font-weight: 400;
+  color: #888 !important;
 }
 
 /* Selected result item */
@@ -384,7 +438,7 @@ toolbarbutton#alltabs-button {
 }
 
 /*###########################################################################
-#  Hide bookmark button, page actions, security labels and extension icons  #
+#                          Bookmark toolbar tweaks                          #
 ###########################################################################*/
 
 /* Hide some URL bar buttons */
@@ -404,43 +458,69 @@ toolbarbutton#alltabs-button {
   opacity: 0 !important;
 }
 
+/* Toolbar size and color */
 #PersonalToolbar {
   max-height: none !important;
   /* Otherwise it's limited to 4em */
-  height: 2.5em;
-  /* Just some ridiculous size so you know it works. */
+  height: 24px;
+  background-color: #323234 !important;
+  border-style: solid;
+  border-width: 0px;
+  border-top-width: 1px;
+  border-top-color: black;
 }
 
-/* Hide titlebar spaces */
-.titlebar-spacer {
-  display: none;
+/* Toolbar items (bookmarks) */
+#PlacesToolbarItems {
+  margin-top: 3px !important;
+  color: #c0c0c0;
 }
 
-/* Put nav bar above the tab bar and make a space for traffic lights. */
-#nav-bar {
-  -moz-box-ordinal-group: 0 !important;
-  padding-left: 75px !important;
+/* Bookmark items max width */
+.bookmark-item {
+  max-width: 125px !important;
+}
+
+/* Darker bookmark items on hover */
+.bookmark-item:hover, .bookmark-item[open=true] {
+  background-color: #1B1B1C !important;
+  border-radius: 3px !important;
+}
+
+/* Bookmark icons saturation */
+.bookmark-item > .toolbarbutton-icon {
+  filter: sepia(100%) saturate(0%);
+}
+
+/* Bookmark folder popup */
+.popup-internal-box, .menuitem-iconic, .openintabs-menuitem {
+  background-color: #1B1B1C !important;
+  max-width: 200px !important;
+  box-shadow: none;
+}
+
+/* Lighten bookmark folder popup list items on hover */
+.menuitem-iconic:hover, .openintabs-menuitem:hover {
   background-color: #292929 !important;
-  border: none!important;
 }
 
-/* Darker Navbar when unhovered */
-#nav-bar > * {
-  opacity:0.5;
-  transition: opacity 0.3s;
+/* Bookmark folder popup separator */
+.bookmarks-actions-menuseparator {
+  background-color: #474645 !important;
 }
 
-/* Lighten Navbar on hover */
-#nav-bar:hover > * {
-  opacity:1 !important;
+/* !!TODO, trying to colorize the bookmark separator */
+toolbarseparator {
+  -moz-appearance: separator;
+  color: #474645 !important;
+  margin: 0px 4px !important;
 }
 
 /*###########################################################################
 #                                 Tool Bar                                  #
 ###########################################################################*/
 
-/* Contextual toolbar buttons, only show on hover, this is what matters, the rest of the file are just style tweaks I like
- */
+/* Contextual toolbar buttons, only show on hover, this is what matters, the rest of the file are just style tweaks I like */
 
 :root:not([customizing]) #nav-bar toolbarbutton {
   opacity: 0 !important;
@@ -463,12 +543,6 @@ window:not([chromehidden~="toolbar"]) #urlbar-container > .toolbarbutton-1:-moz-
 #main-window:not([customizing]) #back-button[disabled] > .toolbarbutton-icon[class] {
   box-shadow: none !important;
   border: 0px !important;
-}
-
-/* Move traffic lights in the space carved above. */
-.titlebar-buttonbox-container {
-  position: absolute;
-  margin-top: -64px
 }
 
 #nav-bar:-moz-window-inactive toolbarbutton > .toolbarbutton-icon:hover,
@@ -508,4 +582,5 @@ window:not([chromehidden~="toolbar"]) #urlbar-container > .toolbarbutton-1:-moz-
   border: none !important;
   background: transparent !important;
   box-shadow: none !important;
-  opaci
+  opacity: 1 !important;
+}
