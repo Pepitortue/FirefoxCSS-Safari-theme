@@ -25,9 +25,9 @@ Restart Firefox.
 To enable the blur filter on the pop up URL menu, you need to set the `layout.css.backdrop-filter.enabled` to `true` in about:config
 
 ## TODO
-* Pop up URL menu is not centered in the windows. Currently using a % margin but it only works with 1080p displays
-* Pop up URL menu is invisible in about:newtab if URL bar is not selected.
-* Small glitch on the pinned tabs when the window is shrinked and the tab overflow appears
+* Pop up URL menu is not centered in the windows. Currently using @media keys.
+* Pop up URL menu is invisible in about:newtab if URL bar is not selected. -> temporarily disabled the Darker Navbar when unhovered transition
+* Strange behavior on tab overflox, pinned tabs borders are duplicated until their width is incremented by 1px. Unfortunately it is reseted everytime firefox is relaunched (but incrementation stay).
 
 ## Issues
 This theme was tested with Firefox 72.0.2 on MacOS Catalina. Graphical differences might occur on other OS.
