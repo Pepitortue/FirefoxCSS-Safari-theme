@@ -1,7 +1,9 @@
 # FirefoxCSS-Safari-theme
 A Safari like them for Firefox 72+ MacOS
 
-![FirefoxCSS Safari theme](https://github.com/Pepitortue/FirefoxCSS-Safari-theme/blob/master/Showcase.png "FirefoxCSS Safari theme")
+<p align="center">
+  <img src="https://github.com/Pepitortue/FirefoxCSS-Safari-theme/blob/master/Showcase.png">
+</p>
 <p align="center">
   <img src="https://github.com/Pepitortue/FirefoxCSS-Safari-theme/blob/master/Showcase.gif">
 </p>
