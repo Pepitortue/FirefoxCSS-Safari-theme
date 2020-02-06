@@ -256,8 +256,10 @@ menuitem, .sync-ui-item, #context-navigation menuitem  {
 .tabbrowser-tab:-moz-any([pinned])> .tab-stack > .tab-content {
   margin-left: -1px;
   margin-right: 0px;
-  width: 40px !important;
-  max-width: 40px !important;
+  /* !!TODO strange behavior on tab overflox, borders are duplicated until below widths are incremented by 1px
+  But it is reseted everytime firefox is relaunched.. */
+  width: 37px !important;
+  max-width: 37px !important;
 }
 
 /* Private browsing button */
