@@ -244,11 +244,11 @@ menuitem, .sync-ui-item, #context-navigation menuitem  {
   background-image: none !important;
 }
 
+/* Tab pannel max height to prevent double bottom border */
 .tabbrowser-tab {
   margin-top: 0px !important;
   height: 24px !important;
   max-height: 24px !important;
-  border-bottom-color: red !important; 
 }
 
 /* Pinned tabs margin/border tweaks on tab overflow */
