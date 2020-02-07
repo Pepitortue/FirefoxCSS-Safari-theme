@@ -244,14 +244,50 @@ menuitem, .sync-ui-item, #context-navigation menuitem  {
   background-image: none !important;
 }
 
+.tabbrowser-tab {
+  margin-top: 0px !important;
+  height: 24px !important;
+  max-height: 24px !important;
+  border-bottom-color: red !important; 
+}
+
 /* Pinned tabs margin/border tweaks on tab overflow */
-.tabbrowser-tab:-moz-any([pinned])> .tab-stack > .tab-content {
-  margin-left: -1px;
-  margin-right: 0px;
-  /* !!TODO strange behavior on tab overflox, borders are duplicated until below widths are incremented by 1px
-  But it is reseted everytime firefox is relaunched.. */
-  width: 37px !important;
-  max-width: 37px !important;
+.tabbrowser-tab:-moz-any([pinned]) > stack {
+  border-style: solid !important;
+  border-left-width: 0px !important;
+  border-right-width: 1px !important;
+  border-top-width: 1px !important;
+  border-bottom: 1px !important;
+  height: 24px !important;
+  max-height: 24px !important;
+}
+
+/* Pinned tabs margin/border tweaks on tab overflow */
+.tabbrowser-tab:-moz-any([pinned]) > .tab-stack > .tab-content {
+  margin-left: 0px;
+  margin-right: -1px;
+  border-left-width: 0px !important;
+  border-top-width: 0px !important;
+  width: 36px !important;
+  max-width: 36px !important;
+}
+
+/* Selected pinned tabs margin/border tweaks on tab overflow */
+.tabbrowser-tab:-moz-any([pinned][selected="true"]) > stack {
+  border-left-width: 1px !important;
+  border-left-color: #474645 !important;
+}
+
+/* Selected pinned tabs margin/border tweaks on tab overflow */
+.tabbrowser-tab:-moz-any([pinned][selected="true"]) > .tab-stack > .tab-content {
+  border-left-width: 0px !important;
+  border-left-color: #474645 !important;
+  margin-left: -1px !important;
+}
+
+/* Using the vbox as pinned tab border since this is the background */
+.tabbrowser-tab:-moz-any([pinned])> .tab-stack > vbox {
+  background-color: #474645 !important;
 }
 
 /* Private browsing button */
@@ -341,7 +377,6 @@ Disabled in the meantime */
 #tracking-protection-icon-container  {
   display: none !important;
 }
-
 
 /* Centered URL bar text */
 #urlbar-input{
