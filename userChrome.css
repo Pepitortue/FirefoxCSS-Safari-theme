@@ -38,14 +38,6 @@ menuitem, .sync-ui-item, #context-navigation menuitem  {
 #                                  Tabs                                     #
 ###########################################################################*/
 
-/* Put nav bar above the tab bar and make a space for traffic lights. */
-#nav-bar {
-  -moz-box-ordinal-group: 0 !important;
-  padding-left: 75px !important;
-  background-color: #292929 !important;
-  border: none!important;
-}
-
 /* Tabs height + color + bottom boder for scroll tab buttons */
 #tabbrowser-tabs {  
   padding: 0;
@@ -57,7 +49,7 @@ menuitem, .sync-ui-item, #context-navigation menuitem  {
   border-top-width: 0px;
   border-bottom-width: 1px;
   border-right-width: 0px;
-  border-left-width: 0px;;
+  border-left-width: 0px;
   border-bottom-color: black !important;
 }
 
@@ -287,6 +279,14 @@ menuitem, .sync-ui-item, #context-navigation menuitem  {
 #                                 URL Bar                                   #
 ###########################################################################*/
 
+/* Put nav bar above the tab bar and make a space for traffic lights. */
+#nav-bar {
+  -moz-box-ordinal-group: 0 !important;
+  padding-left: 75px !important;
+  background-color: #292929 !important;
+  border: none!important;
+}
+
 /* Horizontally centered bar */
 #urlbar-container {
   -moz-box-pack: center !important;
@@ -304,11 +304,21 @@ menuitem, .sync-ui-item, #context-navigation menuitem  {
   outline: none !important;
   box-shadow: none !important;
   border: none !important;
-  margin: 4px 0px !important;
+  margin: 5px 0px 4px 56px !important;
   min-height: 23px !important;
   max-height: 23px !important;
   cursor: default;
   max-width: 780px;
+}
+
+@media (max-width: 1230px) {
+  #urlbar,
+  .searchbar-textbox,
+  #urlbar:hover,
+  #urlbar[focused],
+  .searchbar-textbox:hover {
+    margin: 5px 0px 4px 0px !important;
+  }
 }
 
 /* Darker Navbar when unhovered */
@@ -316,14 +326,19 @@ menuitem, .sync-ui-item, #context-navigation menuitem  {
 Disabled in the meantime */
 /*
 #nav-bar > * {
-  opacity:0.5;
-  transition: opacity 0.3s;
+  opacity:0.5 !important;
+  transition: opacity 0.3s !important;
 }
 */
 
+#nav-bar > hbox {
+  opacity:0.5 !important;
+  transition: opacity 0.3s !important;
+}
+
 /* Lighten Navbar on hover */
 #nav-bar:hover > * {
-  opacity:1 !important;
+  opacity: 1 !important;
 }
 
 /* Remove navbar buttons */
@@ -332,10 +347,6 @@ Disabled in the meantime */
   display: none !important;
 }
 
-/* Vertically centered URL bar */
-#urlbar-container {
-  margin-top: 1px;
-}
 
 /* Centered URL bar text */
 #urlbar-input{
@@ -364,34 +375,25 @@ Disabled in the meantime */
 ###########################################################################*/
 
 /* Background color of the popup menu */
-@media (max-width: 1920px) {
-  .urlbarView {
-    margin-top: -7px !important;
-    background-color: #242424C0 !important;
-    backdrop-filter: blur(32px) !important; /* Firefox > 70 / Need layout.css.backdrop-filter.enabled set to true*/
-    width: 780px !important;
-    margin-left: 28.25%;
-    border-radius: 0 0 8px 8px !important;
-    border-top: none !important;
-    border-bottom: none !important;
-    box-shadow: 0px 0px 40px rgba(0, 0, 0, 25%) !important;
-  }
+.urlbarView {
+  margin-top: -7px !important;
+  background-color: #242424C0 !important;
+  backdrop-filter: blur(32px) !important; /* Firefox > 70 / Need layout.css.backdrop-filter.enabled set to true*/
+  width: 780px !important;
+  margin-left: calc((100% - 780px) / 2);
+  border-radius: 0 0 8px 8px !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 30%) !important;
 }
 
-@media (max-width: 1919px) {
-  .urlbarView {
-     width: 50% !important;
-    margin-left: 25%;
-  }
-}
-
-@media (max-width: 1179px) {
+@media (max-width: 1230px) {
   .urlbarView {
     width: 90% !important;
     margin-left: 5%;
   }
 }
-  
+
 /* Popup menu size and position */
 #urlbar-results {
   --item-padding-start: 0px !important;
@@ -401,18 +403,33 @@ Disabled in the meantime */
 
 /* Popup menu website/description text */
 .urlbarView-row:not([type="search"]) .urlbarView-title {
-  min-width: 60% !important;
-  max-width: 60% !important;
+  min-width: 85% !important;
+  max-width: 85% !important;
   font-size: 11px;
   margin-right: 700px;
 }
 
+@media (max-width: 800px) {
+  .urlbarView-row:not([type="search"]) .urlbarView-title {
+    min-width: 60% !important;
+    max-width: 60% !important;
+  }
+}
+
 /* Popup menu url text */
 .urlbarView-url {
-  min-width: 30% !important;
-  max-width: 30% !important;
-  font-weight: 400;
+  min-width: 33% !important;
+  max-width: 33% !important;
+  font-weight: 400 !important;
+  font-size: 11px !important;
   color: #888 !important;
+}
+
+@media (max-width: 400px) {
+  .urlbarView-url {
+    min-width: 40% !important;
+    max-width: 40% !important;
+  }
 }
 
 /* Selected result item */
@@ -465,11 +482,12 @@ Disabled in the meantime */
   max-height: none !important;
   /* Otherwise it's limited to 4em */
   height: 24px;
-  background-color: #323234 !important;
+  background-color: #292929 !important;
   border-style: solid;
   border-width: 0px;
   border-top-width: 1px;
   border-top-color: black;
+  font-weight: 300;
 }
 
 /* Toolbar items (bookmarks) */
@@ -509,13 +527,6 @@ Disabled in the meantime */
 /* Bookmark folder popup separator */
 .bookmarks-actions-menuseparator {
   background-color: #474645 !important;
-}
-
-/* !!TODO, trying to colorize the bookmark separator */
-toolbarseparator {
-  -moz-appearance: separator;
-  color: #474645 !important;
-  margin: 0px 4px !important;
 }
 
 /*###########################################################################
