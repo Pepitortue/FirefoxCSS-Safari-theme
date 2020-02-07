@@ -331,11 +331,6 @@ Disabled in the meantime */
 }
 */
 
-#nav-bar > hbox {
-  opacity:0.5 !important;
-  transition: opacity 0.3s !important;
-}
-
 /* Lighten Navbar on hover */
 #nav-bar:hover > * {
   opacity: 1 !important;
