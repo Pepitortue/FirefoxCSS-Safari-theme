@@ -23,7 +23,7 @@ Restart Firefox.
 
 ### Additional
 To enable the blur filter on the pop up URL menu, you need to set the `layout.css.backdrop-filter.enabled` to `true` in about:config
-Enable web renderer (at least for MacOS users and Firefox 72) changing the `gfx.webrender.enabled` to `true` in about:config
+Enable web renderer (at least for MacOS users and Firefox 72) changing the `gfx.webrender.all` to `true` in about:config
 
 ## TODO
 * Pop up URL menu sometimes invisible if URL bar is not selected/hovered. -> temporarily disabled the Darker Navbar when unhovered transition
