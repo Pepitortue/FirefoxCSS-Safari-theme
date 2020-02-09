@@ -323,11 +323,6 @@ menuitem, .sync-ui-item, #context-navigation menuitem  {
   border: none!important;
 }
 
-/* Horizontally centered bar */
-#urlbar-container {
-  -moz-box-pack: center !important;
-}
-
 /* URL bar size and alignment */
 #urlbar,
 .searchbar-textbox,
@@ -345,6 +340,7 @@ menuitem, .sync-ui-item, #context-navigation menuitem  {
   max-height: 23px !important;
   cursor: default;
   max-width: 780px;
+  margin-left : calc((100vw - 1124px) / 2) !important;
 }
 
 @media (max-width: 1230px) {
@@ -484,6 +480,16 @@ Disabled in the meantime */
 /* Remove the separator */
 .urlbarView-title-separator {
   display: none;
+}
+
+/* Remove popup URL bar icons (stars, tab...)  */
+.urlbarView-type-icon {
+  display: none;
+}
+
+/** Remove search with bar **/
+.search-one-offs {
+  display: none !important;
 }
 
 /*###########################################################################
@@ -626,4 +632,22 @@ window:not([chromehidden~="toolbar"]) #urlbar-container > .toolbarbutton-1:-moz-
   background: transparent !important;
   box-shadow: none !important;
   opacity: 1 !important;
+}
+
+/** Remove Pocket **/
+#pocket-button {
+  display: none;
+}
+
+/** Remove Home button **/
+#home-button {
+  display: none;
+}
+
+/** Remove default flexible spaces from the navbar
+Note that any other space will need to be removed manually **/
+#customizableui-special-spring1, #customizableui-special-spring2,
+/* !!TODO : Try to use wildcard to remove any space */
+toolbarspring[class*='customizableui-special-spring'] {
+  display: none;
 }
