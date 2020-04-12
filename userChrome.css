@@ -327,6 +327,7 @@ menuitem, .sync-ui-item, #context-navigation menuitem  {
 #urlbar,
 .searchbar-textbox,
 #urlbar:hover,
+#urlbar[open=true],
 #urlbar[focused],
 .searchbar-textbox:hover {
   text-align: center !important;
@@ -335,7 +336,7 @@ menuitem, .sync-ui-item, #context-navigation menuitem  {
   outline: none !important;
   box-shadow: none !important;
   border: none !important;
-  margin: 5px 0px 4px 56px !important;
+  margin: 3px 0px 4px 56px !important;
   min-height: 23px !important;
   max-height: 23px !important;
   cursor: default;
@@ -349,8 +350,27 @@ menuitem, .sync-ui-item, #context-navigation menuitem  {
   #urlbar:hover,
   #urlbar[focused],
   .searchbar-textbox:hover {
-    margin: 5px 0px 4px 0px !important;
+    margin: 3px 0px 4px 0px !important;
+    max-width: 100% !important;
   }
+}
+
+/* Remove URL bar borders for FF75+ */
+#urlbar-background {
+  border: none !important;
+}
+
+/* Vertival aligned urlbar on focus for FF75+ */
+#urlbar[breakout][breakout-extend] {
+  top: 6px !important;
+  left : 0px !important;
+  width: 780px !important;
+}
+
+/* Vertival aligned urlbar text on focus for FF75+ */
+#urlbar[breakout][focused="true"] > #urlbar-input-container {
+  top : -8px !important;
+  transition: none;
 }
 
 /* Darker Navbar when unhovered */
@@ -375,14 +395,14 @@ Disabled in the meantime */
 }
 
 /* Centered URL bar text */
-#urlbar-input{
+#urlbar-input {
   text-align: center !important;
 }
 
-/* URL bar inner text padding */
-.urlbar-input-box {
-  padding-left: 10px;
-  padding-right: 0px;
+/* /* URL bar inner text padding */
+#urlbar-input-container {
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 /* Borders/Padding inside URL bar */
@@ -402,11 +422,11 @@ Disabled in the meantime */
 
 /* Background color of the popup menu */
 .urlbarView {
-  margin-top: -7px !important;
+  margin-top: -15px !important;
   background-color: #242424C0 !important;
   backdrop-filter: blur(32px) !important; /* Firefox > 70 / Need layout.css.backdrop-filter.enabled set to true*/
   width: 780px !important;
-  margin-left: calc((100% - 780px) / 2);
+  margin-left: calc((100% - 780px) / 2) !important;
   border-radius: 0 0 8px 8px !important;
   border-top: none !important;
   border-bottom: none !important;
@@ -416,7 +436,7 @@ Disabled in the meantime */
 @media (max-width: 1230px) {
   .urlbarView {
     width: 90% !important;
-    margin-left: 5%;
+    margin-left: 5% !important;
   }
 }
 
@@ -427,10 +447,15 @@ Disabled in the meantime */
   text-align: left;
 }
 
+/* Remove popup menu top border */
+.urlbarView.megabar .urlbarView-body-inner {
+	border-top: none !important;
+}
+
 /* Popup menu website/description text */
 .urlbarView-row:not([type="search"]) .urlbarView-title {
-  min-width: 85% !important;
-  max-width: 85% !important;
+  min-width: 75% !important;
+  max-width: 75% !important;
   font-size: 11px;
   margin-right: 700px;
 }
@@ -467,7 +492,8 @@ Disabled in the meantime */
 /* Hover result item */
 .autocomplete-richlistitem[selected],
 .urlbarView-row:hover {
-   background-color: #222221 !important; /* Hovered Row */
+  background-color: #000 !important; /* Hovered Row */
+  border : none !important;
 }
 
 /* Border between results */
@@ -482,15 +508,11 @@ Disabled in the meantime */
   display: none;
 }
 
-/* Remove popup URL bar icons (stars, tab...)  */
-.urlbarView-type-icon {
-  display: none;
-}
-
-/** Remove search with bar **/
+/* Remove search with bar */
 .search-one-offs {
   display: none !important;
 }
+
 
 /*###########################################################################
 #                          Bookmark toolbar tweaks                          #
@@ -639,15 +661,7 @@ window:not([chromehidden~="toolbar"]) #urlbar-container > .toolbarbutton-1:-moz-
   display: none;
 }
 
-/** Remove Home button **/
-#home-button {
+.urlbarView-type-icon {
   display: none;
 }
-
-/** Remove default flexible spaces from the navbar
-Note that any other space will need to be removed manually **/
-#customizableui-special-spring1, #customizableui-special-spring2,
-/* !!TODO : Try to use wildcard to remove any space */
-toolbarspring[class*='customizableui-special-spring'] {
-  display: none;
-}
+/* 667's line :) */
