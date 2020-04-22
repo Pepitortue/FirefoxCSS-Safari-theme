@@ -15,7 +15,7 @@ toolbarbutton#alltabs-button {
 /* Move traffic lights in the space carved above. */
 .titlebar-buttonbox-container {
   position: absolute;
-  margin-top: -64px
+  margin-top: -65px
 }
 
 /* Hide/re-order the menu button. */
@@ -373,19 +373,43 @@ menuitem, .sync-ui-item, #context-navigation menuitem  {
   transition: none;
 }
 
-/* Darker Navbar when unhovered */
-/* !!TODO - isssue that makes pop up url transparent 
-Disabled in the meantime */
-/*
-#nav-bar > * {
-  opacity:0.5 !important;
-  transition: opacity 0.3s !important;
+/* Darker Navbar items (addons, nav icons and urlbar) when unhovered */
+#nav-bar > .customization-target image,
+#nav-bar > .customization-target > .megabar > #urlbar > #urlbar-background,
+#nav-bar > .customization-target > .megabar > #urlbar > #urlbar-input-container {
+  opacity: 0.5 !important;
+  filter: saturate(0%) !important;
+  transition: opacity 0.5s !important;
 }
-*/
 
-/* Lighten Navbar on hover */
-#nav-bar:hover > * {
+/* Lighten Navbar items (addons, nav icons and urlbar) on hover */
+#nav-bar:hover > .customization-target image,
+#nav-bar:hover > .customization-target > .megabar > #urlbar > #urlbar-background,
+#nav-bar:hover > .customization-target > .megabar > #urlbar > #urlbar-input-container {
   opacity: 1 !important;
+  filter: saturate(100%) !important;
+}
+
+/* Darker back button (fix) */
+#nav-bar > .customization-target label {
+  filter: brightness(50%) saturate(0%) !important;
+  transition: 0.5s !important;
+}
+
+/* Lighten back button (fix) */
+#nav-bar:hover > .customization-target label {
+  filter: brightness(100%) saturate(100%) !important;
+}
+
+/* Darker addons badges */
+#nav-bar > .customization-target > #back-button > image {
+  filter: brightness(60%) !important;
+  transition: 0.5s !important;
+}
+
+/* Lighten addons badges */
+#nav-bar:hover > .customization-target > #back-button > image {
+  filter: brightness(100%) !important;
 }
 
 /* Remove navbar buttons */
@@ -399,7 +423,7 @@ Disabled in the meantime */
   text-align: center !important;
 }
 
-/* /* URL bar inner text padding */
+/* URL bar inner text padding */
 #urlbar-input-container {
 	padding-left: 15px;
 	padding-right: 15px;
@@ -411,7 +435,7 @@ Disabled in the meantime */
   padding: 0 4px !important;
 }
 
-/* Remove sperators from the tool bar */
+/* Remove separators from the tool bar */
 #pageActionSeparator {
   display: none;
 }
@@ -592,12 +616,11 @@ Disabled in the meantime */
 ###########################################################################*/
 
 /* Contextual toolbar buttons, only show on hover, this is what matters, the rest of the file are just style tweaks I like */
-
 :root:not([customizing]) #nav-bar toolbarbutton {
   opacity: 0 !important;
   transform: scale(.85, .85) !important;
   pointer-events: none !important;
-  transition: all 500ms var(--animation-easing-function) !important;
+  transition: all 1000ms var(--animation-easing-function) !important;
 }
 
 :root:not([customizing]) :hover > #nav-bar toolbarbutton,
@@ -664,4 +687,3 @@ window:not([chromehidden~="toolbar"]) #urlbar-container > .toolbarbutton-1:-moz-
 .urlbarView-type-icon {
   display: none;
 }
-/* 667's line :) */
