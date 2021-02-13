@@ -13,11 +13,12 @@ This is a Firefox theme for MacOS inspired by Safari. This theme is not meant to
 This code contains a mix of code shared by people from r/FirefoxCSS and modifications I made.
 
 ## Installation
-1. Copy the userChrome.css file into your Firefox profile directory.
+1. Enable the legacy Firefox CSS customizations by setting the `toolkit.legacyUserProfileCustomizations.stylesheets` to `true` in about:config
+2. Copy the userChrome.css file into your Firefox profile directory.
 To access this folder, go to about:profiles and click the "Open in Finder" button in front of the first "root directory" line. In the opened Finder window, open the "chrome" folder.
 Restart Firefox.
-2. Follow the same process with the userContent.css file
-3. Restart Firefox
+3. Follow the same process with the userContent.css file
+4. Restart Firefox
 
 *Note : ShadowFox users only have to copy/paste the code at the end of their userChome.css and userContent.css files.*
 
