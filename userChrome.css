@@ -1,4 +1,6 @@
-/*:root:not([customizing]) -> toute la fenêtre*/
+/*###########################################################################
+#                               UI modifications                            #
+###########################################################################*/
 
 :root {
   /* Appmenu: Reduce item padding */
@@ -9,8 +11,35 @@
   --tab-min-height: 24px !important;
   /* #urlbar and #searchbar height */
   --urlbar-min-height: 24px !important;
+  /* toolbar button hover color */
+  --toolbarbutton-hover-background: #353535 !important;
 }
 
+/*###########################################################################
+#                            URL Bar / Nav bar                              #
+###########################################################################*/
+
+/* Place the navbar atop the tab bar + cosmetics */
+#nav-bar {
+  -moz-box-ordinal-group: 0 !important;
+  padding-left: 75px !important;
+  padding-top: 1px !important;
+  background-color: #222 !important;
+  border: none !important;
+  max-height: 31px !important;
+}
+
+/* Draggable urlbar */
+toolbox, #urlbar-container {
+  -moz-window-dragging: drag !important;
+}
+
+/* Vertically aligned traffic lights */
+.titlebar-buttonbox-container {
+  margin-top: -55px;
+}
+
+/* Back and Forward buttons positioning */
 #back-button, #forward-button, #reload-button {
   /* not affecting button size */
 	--toolbarbutton-outer-padding: 4px !important;
@@ -29,11 +58,6 @@
   fill: rgba(255,255,255,0.25) !important;
 }
 
-/* URLBar: Fix vertical alignment */
-#urlbar[breakout=true]:not([open="true"]) {
-	--urlbar-height: 20px !important;
-	--urlbar-toolbar-height: 24px !important;
-}
 
 /* Toolbar: Reduce spacing */
 #urlbar-container {
@@ -41,14 +65,141 @@
   margin-top: 0 !important;
 }
 
-/*###########################################################################
-#                               UI modifications                            #
-###########################################################################*/
+/* URL bar size and alignment */
+#urlbar,
+.searchbar-textbox,
+#urlbar:hover,
+#urlbar:is([open=true]),
+#urlbar:is([focused=true]),
+.searchbar-textbox:hover {
+  text-align: center !important;
+  padding: 0px !important;
+  font-size: 1.1em !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  margin-top: 1px !important;
+  min-height: 25px !important;
+  max-height: 25px !important;
+  cursor: default;
+  max-width: 780px;
+  margin-left : calc((100vw - 1124px) / 2) !important;
+}
 
-/* Move traffic lights in the space carved above. */
-.titlebar-buttonbox-container {
-  position: absolute;
-  margin-top: -55px;
+/* URLBar: Fix vertical alignment */
+#urlbar[breakout=true]:not([open="true"]) {
+	--urlbar-height: 20px !important;
+	--urlbar-toolbar-height: 24px !important;
+}
+
+/* Darker URL bac color when active */
+#urlbar:is([open=true], [focused=true]) {
+  background-color: #101010 !important;
+}
+
+@media (max-width: 1500px) {
+  #urlbar,
+  .searchbar-textbox,
+  #urlbar:hover,
+  #urlbar[focused],
+  .searchbar-textbox:hover {
+    max-width: 680px;
+  }
+}
+
+@media (max-width: 1250px) {
+  #urlbar,
+  .searchbar-textbox,
+  #urlbar:hover,
+  #urlbar[focused],
+  .searchbar-textbox:hover {
+    max-width: 100% !important;
+    margin-left : 0px !important;
+  }
+}
+
+/* Verticaly aligned urlbar when clicking on it */
+#urlbar[breakout][breakout-extend] {
+  top: 0px !important;
+  left : 0px !important;
+}
+
+/* Verticaly aligned urlbar text on focus for FF75+ */
+#urlbar[breakout][focused="true"] > #urlbar-input-container {
+  top: -1px !important;
+  transition: none;
+}
+
+/* Darker Navbar items (addons, nav icons) when unhovered */
+#nav-bar > .customization-target image,
+#nav-bar > #nav-bar-customization-target > toolbaritem > hbox > #urlbar-input-container {
+  opacity: 0.5 !important;
+  filter: saturate(0%) !important;
+  transition: opacity 0.5s !important;
+}
+
+/* Lighter Navbar elements when unhovered */
+#navigator-toolbox > #nav-bar > #nav-bar-customization-target > toolbaritem > hbox > #urlbar-background {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+/* Darker Navbar elements when hovered */
+#navigator-toolbox:hover > #nav-bar > #nav-bar-customization-target > toolbaritem > hbox > #urlbar-background {
+  background-color: #101010 !important;
+}
+
+/* Lighter Navbar items (addons, nav icons and urlbar) on hover */
+#nav-bar:hover > .customization-target image,
+#nav-bar:hover > #nav-bar-customization-target > toolbaritem > hbox > #urlbar-input-container {
+  opacity: 1 !important;
+  filter: saturate(100%) !important;
+}
+
+/* Darker addons badges and icons */
+#nav-bar > #nav-bar-overflow-button > .toolbarbutton-icon,
+#nav-bar > toolbaritem > .toolbarbutton-1 > .toolbarbutton-badge-stack,
+#nav-bar > .customization-target label {
+  filter: brightness(50%) saturate(0%) !important;
+  transition: 0.5s !important;
+}
+
+/* Lighter addons badges and icons */
+#nav-bar:hover > #nav-bar-overflow-button > .toolbarbutton-icon,
+#nav-bar:hover > toolbaritem > .toolbarbutton-1 > .toolbarbutton-badge-stack,
+#nav-bar:hover > .customization-target label {
+  filter: brightness(100%) saturate(100%) !important;
+}
+
+/* Addons badges position and padding */
+#nav-bar > hbox > .toolbarbutton-1 > .toolbarbutton-badge-stack > label {
+  margin-top: -4px !important;
+}
+
+/* Hide some URL bar buttons */
+#star-button-box,
+#pageActionButton,
+#blocked-permissions-container,
+#identity-icon-labels,
+#extension-icon,
+#reader-mode-button,
+#urlbar-history-dropmarker,
+#identity-box[pageproxystate="valid"], 
+#tracking-protection-icon-container {
+  display: none !important;
+  background: transparent !important;
+}
+
+/* URL bar inner left and right text padding (usefull for long URL) */
+#urlbar-input, #urlbar-scheme, .searchbar-textbox {
+	padding-left: 15px !important;
+	padding-right: 15px !important;
+}
+
+/* URL bar zoom button color and border radius */
+#urlbar-zoom-button {
+  background-color: #353535 !important;
+  border-radius: 6px !important;
 }
 
 /*###########################################################################
@@ -63,12 +214,12 @@
   padding-right: 0px !important;
 }
 
-.tabbrowser-tab:not([pinned]) {
-  margin-left: -5px !important;
+.tabbrowser-tab:not([pinned="true"]) {
+  margin-left: -4px !important;
 }
 
 /* Tab bar height */
-#titlebar-secondary-buttonbox {
+#titlebar {
   max-height: 25px !important;
 }
 
@@ -123,7 +274,7 @@
 }
 
 /* Align sound icon */
-.tab-icon-stack>.tab-icon-overlay {
+.tab-icon-stack > .tab-icon-overlay {
   margin-inline-end: 0px !important;
 }
 
@@ -139,10 +290,11 @@
   margin-inline-end: 4.5px !important;
   padding: 2px !important;
   width: 17px !important;
+  height: 17px !important;
   display: -moz-box !important;
 }
 
-/* Close button alignment on tab hover */
+/* Close button color when hovered */
 .tabbrowser-tab > .tab-stack > .tab-content > .tab-close-button:hover {
   background: rgba(255,255,255,0.05) !important;
 }
@@ -168,10 +320,34 @@
   display: none !important;
 }
 
+/* Remove close button on pinned tabs */
+.tabbrowser-tab[pinned=true] > .tab-stack > .tab-content >.tab-close-button  {
+  display: none !important;
+}
+
 /* Hide blue dot indicator on pinned tabs */
 .tabbrowser-tab:-moz-any([image], [pinned]) > .tab-stack > .tab-content[attention]:not([selected="true"]),
 .tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) {
   background-image: none !important;
+}
+
+/* Remove tab throbber (loading indicator) */
+.tab-throbber {
+  display: none;
+}
+
+/* Remove the "is playing" text label of the tab */
+.tab-secondary-label:is([soundplaying], [muted], [activemedia-blocked], [pictureinpicture], [sharing]) {
+  display: none !important;
+}
+
+.tab-icon-overlay:is([soundplaying], [muted], [activemedia-blocked], [pictureinpicture], [sharing], :not([pinned])) {
+  opacity: 1 !important;
+  bottom: 0px !important;
+  padding: 0px !important;
+  fill-opacity: 1 !important;
+  fill: #c0c0c0 !important;
+  background-color: #353535;
 }
 
 /* New tab button [+] on tab overflow borders */
@@ -245,140 +421,6 @@
 }
 
 /*###########################################################################
-#                                 URL Bar                                   #
-###########################################################################*/
-
-/* URL bar size and alignment */
-#urlbar,
-.searchbar-textbox,
-#urlbar:hover,
-#urlbar[open=true],
-.searchbar-textbox:hover {
-  text-align: center !important;
-  padding: 0px !important;
-  font-size: 1.1em !important;
-  outline: none !important;
-  box-shadow: none !important;
-  border: none !important;
-  margin-top: 1px !important;
-  min-height: 25px !important;
-  max-height: 25px !important;
-  cursor: default;
-  max-width: 780px;
-  margin-left : calc((100vw - 1124px) / 2) !important;
-}
-
-/* Force URL bar vertical alignment while on focus */
-#urlbar[focused],
-.searchbar-textbox:hover {
-  margin-top: 1px !important;
-}
-
-@media (max-width: 1500px) {
-  #urlbar,
-  .searchbar-textbox,
-  #urlbar:hover,
-  #urlbar[focused],
-  .searchbar-textbox:hover {
-    max-width: 680px;
-  }
-}
-
-@media (max-width: 1250px) {
-  #urlbar,
-  .searchbar-textbox,
-  #urlbar:hover,
-  #urlbar[focused],
-  .searchbar-textbox:hover {
-    max-width: 100% !important;
-    margin-left : 0px !important;
-  }
-}
-
-/* Vertival aligned urlbar when clicking on it */
-#urlbar[breakout][breakout-extend] {
-  top: 0px !important;
-  left : 0px !important;
-}
-
-/* Vertival aligned urlbar text on focus for FF75+ */
-#urlbar[breakout][focused="true"] > #urlbar-input-container {
-  top: -1px !important;
-  transition: none;
-}
-
-/* Darker Navbar items (addons, nav icons) when unhovered */
-#nav-bar > .customization-target image,
-#nav-bar > #nav-bar-customization-target > toolbaritem > hbox > #urlbar-input-container {
-  opacity: 0.5 !important;
-  filter: saturate(0%) !important;
-  transition: opacity 0.5s !important;
-}
-
-/* Lighter Navbar when unhovered */
-#navigator-toolbox > #nav-bar > #nav-bar-customization-target > toolbaritem > hbox > #urlbar-background {
-  background-color: transparent !important; /* #080808 */
-}
-
-/* Darker Navbar when hovered */
-#navigator-toolbox:hover > #nav-bar > #nav-bar-customization-target > toolbaritem > hbox > #urlbar-background {
-  background-color: #101010 !important;
-}
-
-/* Lighter Navbar items (addons, nav icons and urlbar) on hover */
-#nav-bar:hover > .customization-target image,
-#nav-bar:hover > #nav-bar-customization-target > toolbaritem > hbox > #urlbar-input-container {
-  opacity: 1 !important;
-  filter: saturate(100%) !important;
-}
-
-/* Darker addons badges + position */
-#nav-bar > .customization-target label {
-  filter: brightness(50%) saturate(0%) !important;
-  transition: 0.5s !important;
-  margin-top: -4px !important;
-}
-
-/* Lighter addons badges */
-#nav-bar:hover > .customization-target label {
-  filter: brightness(100%) saturate(100%) !important;
-}
-
-/* Addons icons position and padding */
-#nav-bar > hbox > .toolbarbutton-1 > .toolbarbutton-badge-stack {
-	/* affecting button size */
-	--toolbarbutton-inner-padding: 5px !important;
-  margin-top: -2px !important;
-}
-
-/* Remove navbar buttons */
-#identity-box[pageproxystate="valid"], 
-#tracking-protection-icon-container  {
-  display: none !important;
-}
-
-/* URL bar inner text padding */
-#urlbar-input, #urlbar-scheme, .searchbar-textbox {
-	padding-left: 15px !important;
-	padding-right: 15px !important;
-}
-
-/* Remove separators from the tool bar */
-#pageActionSeparator {
-  display: none;
-}
-
-.tab-throbber {
-  display: none;
-}
-
-/* URL bar zoom button positioning */
-#urlbar-zoom-button {
-  margin-top: 8px !important;
-  margin-right: -11px !important;
-}
-
-/*###########################################################################
 #                               Pop Up URL                                  #
 ###########################################################################*/
 
@@ -410,6 +452,7 @@
   }
 }
 
+/* Remove top border */
 urlbarView-body-inner, .urlbarView-body-inner {
   border: none !important;
 }
@@ -436,11 +479,6 @@ urlbarView-body-inner, .urlbarView-body-inner {
   }
 }
 
-/* List hovering */
-.urlbarView-row-inner:hover {
-  background-color: #151515 !important;
-}
-
 /* Popup menu url text */
 .urlbarView-url {
   min-width: 34% !important;
@@ -457,66 +495,28 @@ urlbarView-body-inner, .urlbarView-body-inner {
   }
 }
 
-/* Selected result item */
-.autocomplete-richlistitem[selected],
-.urlbarView-row[selected] {
-   background-color: #222221 !important; /* Selected Row */
-}
-
-/* Hover result item */
-.autocomplete-richlistitem[selected],
-.urlbarView-row:hover {
-  background-color: #000 !important; /* Hovered Row */
-  border : none !important;
-}
-
-/* Border between results */
-#PopupAutoCompleteRichResult .autocomplete-richlistitem,
-.urlbarView-row {
-  border: none !important;
-  border-radius: 0 !important;
-}
-
-/* Remove the separator */
-.urlbarView-title-separator {
-  display: none;
+/* Colored hovered or selected line */
+.urlbarView-row-inner:hover,
+.urlbarView-row:not([type="tip"],[type="dynamic"])[selected] >
+.urlbarView-row-inner,
+.urlbarView-row-inner[selected] {
+  background-color: #222 !important;
 }
 
 /* Remove search with bar */
-.search-one-offs {
-  display: none !important;
-}
-
-/* Remove the pin icon next to the favicon*/
+.search-one-offs,
 .urlbarView-type-icon {
-  display: none;
+  display: none !important;
 }
 
 /*###########################################################################
 #                          Bookmark toolbar tweaks                          #
 ###########################################################################*/
 
-/* Hide some URL bar buttons */
-#star-button-box,
-#pageActionButton,
-#blocked-permissions-container,
-#identity-icon-labels,
-#extension-icon,
-#reader-mode-button,
-#urlbar-history-dropmarker {
-  display: none !important;
-  background: transparent !important;
-}
-
-#identity-box #identity-icon {
-  margin-right: -20px !important;
-  opacity: 0 !important;
-}
-
 /* Bookmark toolbar size and color */
 #PersonalToolbar {
   /* bookmarks toolbar padding */
-	--bookmark-block-padding: 1px !important;
+	--bookmark-block-padding: 2px !important;
   background-color: #222 !important;
   font-weight: 300;
 }
@@ -524,13 +524,12 @@ urlbarView-body-inner, .urlbarView-body-inner {
 /* Centered toolbar items (bookmarks bar) */
 #PlacesToolbarItems {
   -moz-box-pack: center;
-  margin-top: 2px !important;
   color: #c0c0c0;
 }
 
 /* Lighter bookmark items on hover */
 .bookmark-item:hover, .bookmark-item[open=true] {
-  background-color: rgba(255,255,255,0.05) !important;
+  background-color: #353535 !important;
 }
 
 /* Bookmark icons saturation */
@@ -538,20 +537,8 @@ urlbarView-body-inner, .urlbarView-body-inner {
   filter: sepia(100%) saturate(0%);
 }
 
-/* Bookmark folder popup */
-.popup-internal-box, .menuitem-iconic, .openintabs-menuitem {
-  background-color: #1B1B1C !important;
-  box-shadow: none;
-  max-width: none !important;
-}
-
-menupopup, menupopup > menu > menupopup, menupopup scrollbox, popup, popup > menu > menupopup,
-menuitem, menuseparator, arrowscrollbox {
-  background: rgba(0,0,0,0.5) !important;
-}
-
 /*###########################################################################
-#                                 Tool Bar                                  #
+#                            Tool Bar extensions                            #
 ###########################################################################*/
 
 /* Makes toolbar items (extensions icons etc) disapear */
@@ -562,6 +549,7 @@ menuitem, menuseparator, arrowscrollbox {
   transition: all 1000ms var(--animation-easing-function) !important;
 }
 
+/* Makes toolbar items (extensions icons etc) reapear on hover */
 :root:not([customizing]) :hover > #nav-bar toolbarbutton,
 :root:not([customizing]) #navigator-toolbox:focus-within #nav-bar toolbarbutton,
 :root:not([customizing]) :hover > #titlebar toolbarbutton {
@@ -569,13 +557,4 @@ menuitem, menuseparator, arrowscrollbox {
   opacity:1 !important;
   margin-left:0 !important;
   pointer-events: auto !important;
-}
-
-#nav-bar {
-  -moz-box-ordinal-group: 0 !important;
-  padding-left: 75px !important;
-  padding-top: 1px !important;
-  background-color: #222 !important;
-  border: none !important;
-  max-height: 31px !important;
 }
