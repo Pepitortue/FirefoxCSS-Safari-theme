@@ -1,11 +1,11 @@
 # FirefoxCSS-Safari-theme
-A Safari like them for Firefox 72+ MacOS
+A Safari 15 like theme for Firefox 100+ macOS
 
 <p align="center">
-  <img src="https://github.com/Pepitortue/FirefoxCSS-Safari-theme/blob/master/Showcase.png">
+  <img src="https://github.com/Pepitortue/FirefoxCSS-Safari-theme/blob/master/Showcase%20Dark.png">
 </p>
 <p align="center">
-  <img src="https://github.com/Pepitortue/FirefoxCSS-Safari-theme/blob/master/Showcase.gif">
+  <img src="https://github.com/Pepitortue/FirefoxCSS-Safari-theme/blob/master/Showcase%20Light.png">
 </p>
 
 ## What is it
@@ -30,5 +30,5 @@ Enable web renderer (at least for MacOS users and Firefox 72) changing the `gfx.
 * Ensure the theme apply as intended for every users and fresh Firefox install
 
 ## Issues
-This theme was tested with Firefox 72.0.2 on MacOS Catalina. Graphical differences might occur on other OS.
+This theme was tested with Firefox 100 on macOS Monterey. Graphical differences might occur on other OS.
 I will update the theme for every new Firefox release since this is my daily theme.
