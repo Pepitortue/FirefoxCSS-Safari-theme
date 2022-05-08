@@ -1,4 +1,15 @@
-/* Dark scrollbar */
-:root {
-scrollbar-color: #101010 #303030;
-scrollbar-width: thin;
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        scrollbar-color: #373737 #181818;
+	scrollbar-width: thin;
+    }
+}
+
+/* Light scrollbar */
+@media (prefers-color-scheme: light) {
+    :root {
+        scrollbar-color: #d7d7d7 #fff;
+	scrollbar-width: thin;
+    }
+}
